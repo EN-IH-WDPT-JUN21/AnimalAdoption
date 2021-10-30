@@ -17,7 +17,7 @@ public class GatewayConfiguration {
                         .uri("lb://ANIMAL-SERVICE"))
 
                 // Opportunity service
-                .route(p -> p.path("/api/v1//adopter/**")
+                .route(p -> p.path("/api/v1/adopter/**")
                         .uri("lb://ADOPTER-SERVICE"))
 
                 .build();

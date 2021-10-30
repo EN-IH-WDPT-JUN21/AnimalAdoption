@@ -16,13 +16,13 @@ public class AnimalController {
     AnimalService animalService;
 
     @GetMapping("/all")
-    public List<Animal> getAll(){
-        return animalRepository.findAll();
+    public List<AnimalDTO> getAll(){
+        return animalService.findAll();
     }
 
     @GetMapping("/{id}")
-    public Optional<Animal> getById(@PathVariable Long id){
-        return animalRepository.findById(id);
+    public AnimalDTO getById(@PathVariable Long id){
+        return animalService.findById(id);
     }
 
 //    @GetMapping("/{type}")
@@ -35,8 +35,8 @@ public class AnimalController {
 //        return animalRepository.findByAge(age);
 //    }
 
-    @GetMapping("/{type}/{age}")
-    public List<Animal> getByTypeAndAge(@PathVariable String type, @PathVariable int age){
+    @GetMapping
+    public List<Animal> getByTypeAndAge(@RequestParam String type, @RequestParam int age){
         return animalRepository.findByTypeAndAge(type, age);
     }
 

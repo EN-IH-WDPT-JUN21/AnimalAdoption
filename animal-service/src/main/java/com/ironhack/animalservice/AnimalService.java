@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,6 +28,34 @@ public class AnimalService {
         } else {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "There is no animal with this id");
         }
+    }
+
+    public List<AnimalDTO> findAll() {
+        List<AnimalDTO> animalsDTO = new ArrayList<>();
+        var adopters =  animalRepository.findAll();
+        for(Animal animal: adopters){
+            AnimalDTO animalDTO = getAnimal(animal);
+            animalsDTO.add(animalDTO);
+        }
+        return animalsDTO;
+    }
+
+    public AnimalDTO findById(Long id) {
+        Optional<Animal> adopter = animalRepository.findById(id);
+        if(adopter.isPresent()){
+            return getAnimal(adopter.get());
+        }
+        return null;
+    }
+
+
+    public AnimalDTO getAnimal(Animal animal) {
+        AnimalDTO animalDTO = new AnimalDTO();
+        animalDTO.setName(animal.getName());
+        animalDTO.setAge(animal.getAge());
+        animalDTO.setType(animal.getType());
+        animalDTO.setAvailable(animal.isAvailable());
+        return animalDTO;
     }
 
 }
