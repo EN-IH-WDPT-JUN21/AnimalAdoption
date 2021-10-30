@@ -10,5 +10,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AnimalDTO {
-
+    private String name;
+    private String type;
+    private int age;
+    private boolean available;
 }
