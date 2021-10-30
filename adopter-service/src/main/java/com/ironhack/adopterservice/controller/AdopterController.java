@@ -29,7 +29,7 @@ public class AdopterController {
     }
 
     @PostMapping
-    public Adopter createAdopter(@RequestBody AdopterDTO adopterDTO) {
+    public Adopter createAdopter(@RequestBody AdopterDTO adopterDTO) throws Exception {
         return adopterRepository.save(adopterService.create(adopterDTO));
     }
 

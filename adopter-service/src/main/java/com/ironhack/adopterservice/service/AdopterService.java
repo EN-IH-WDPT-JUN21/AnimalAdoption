@@ -48,11 +48,15 @@ public class AdopterService {
         return adopterDTO;
     }
 
-    public Adopter create(AdopterDTO adopterDTO){
+    public Adopter create(AdopterDTO adopterDTO) throws Exception {
         Adopter adopter = new Adopter();
         adopter.setName(adopterDTO.getName());
-        Optional<AnimalDTO> animalDTO = animalServiceProxy.;
-        adopter.setPetId(adopterDTO.getPetId());
-        return adopter;
+        AnimalDTO animalDTO = animalServiceProxy.getById(adopterDTO.getPetId());
+        if(animalDTO.isAvailable()){
+            adopter.setPetId(adopterDTO.getPetId());
+            adopter.setName(adopterDTO.getName());
+            return adopter;
+        }
+        throw new Exception("Animal not available");
     }
 }

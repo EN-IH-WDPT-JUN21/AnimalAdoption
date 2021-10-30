@@ -7,14 +7,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Adopter-service" />
         <module name="animal-service" />
         <module name="discovery-service" />
         <module name="gateway" />
+        <module name="adopter-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Adopter-service" target="17" />
+      <module name="adopter-service" target="17" />
       <module name="animal-service" target="17" />
       <module name="discovery-service" target="17" />
       <module name="gateway" target="17" />
@@ -22,7 +22,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="Adopter-service" options="-parameters" />
+      <module name="adopter-service" options="-parameters" />
       <module name="animal-service" options="-parameters" />
       <module name="discovery-service" options="-parameters" />
       <module name="gateway" options="-parameters" />
