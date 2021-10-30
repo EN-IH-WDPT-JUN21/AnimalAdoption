@@ -13,11 +13,13 @@ public class GatewayConfiguration {
         return builder.routes()
 
                 // Lead service
+                .route(p -> p.path("/api/v1/animal**")
+                        .uri("lb://ANIMAL-SERVICE"))
                 .route(p -> p.path("/api/v1/animal/**")
                         .uri("lb://ANIMAL-SERVICE"))
 
                 // Opportunity service
-                .route(p -> p.path("/api/v1/adopter/**")
+                .route(p -> p.path("/api/v1/adopter**")
                         .uri("lb://ADOPTER-SERVICE"))
 
                 .build();

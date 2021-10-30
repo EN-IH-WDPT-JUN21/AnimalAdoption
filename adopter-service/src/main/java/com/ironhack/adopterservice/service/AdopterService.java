@@ -43,6 +43,7 @@ public class AdopterService {
 
     public AdopterDTO getAdopter(Adopter adopter) {
         AdopterDTO adopterDTO = new AdopterDTO();
+        adopterDTO.setId(adopter.getId());
         adopterDTO.setName(adopter.getName());
         adopterDTO.setPetId(adopter.getPetId());
         return adopterDTO;
